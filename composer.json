@@ -1,0 +1,49 @@
+{
+  "name": "pecotamic/bard-hr",
+  "description": "Statamic Bard HR plugin",
+  "keywords": [
+    "statamic",
+    "bard",
+    "hr"
+  ],
+  "autoload": {
+    "psr-4": {
+      "Pecotamic\\BardHR\\": "src"
+    }
+  },
+  "type": "statamic-addon",
+  "authors": [
+    {
+      "name": "wf@pecora.de",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^7.4",
+    "statamic/cms": "^3.0.14"
+  },
+  "require-dev": {
+    "orchestra/testbench": "4.*|5.*",
+    "phpunit/phpunit": "^8.4|^9.0"
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit",
+    "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "extra": {
+    "statamic": {
+      "name": "Statamic Bard HR plugin",
+      "description": "HR tag command for bard"
+    },
+    "laravel": {
+      "providers": [
+        "Pecotamic\\BardHR\\ServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
