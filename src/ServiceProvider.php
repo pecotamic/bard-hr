@@ -14,6 +14,6 @@ class ServiceProvider extends AddonServiceProvider
     public function boot()
     {
         parent::boot();
-        Augmentor::addMark(HR::class);
+        Augmentor::addNode(HR::class);
     }
 }

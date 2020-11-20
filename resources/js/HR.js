@@ -1,67 +1,33 @@
-const { core: commands } = Statamic.$bard.tiptap;
+import Node from './base/Node'
 
-export default class HR {
-  constructor(options = {}) {
-    this.options = { ...this.defaultOptions,
-      ...options
-    };
-  }
+export default class HR extends Node {
+    get name() {
+        return 'horizontal_ruler'
+    }
 
-  init() {
-    return null;
-  }
+    get schema() {
+        return {
+            inline: false,
+            group: 'block',
+            isBlock: true,
+            parseDOM: [
+                {tag: 'hr'},
+            ],
+            toDOM: () => {
+                return ['hr']
+            },
+        }
+    }
 
-  bindEditor(editor = null) {
-    this.editor = editor;
-  }
+    commands({type}) {
+        return () => (state, dispatch) => {
+            const {selection} = state
+            const position = selection.anchor
 
-  get name() {
-    return 'hr'
-  }
+            const node = type.create()
+            dispatch(state.tr.insert(position, node))
 
-  get type() {
-    return 'node';
-  }
-
-  get defaultOptions() {
-    return {};
-  }
-
-  get plugins() {
-    return [];
-  }
-
-  inputRules() {
-    return [];
-  }
-
-  pasteRules() {
-    return [];
-  }
-
-  keys() {
-    return {};
-  }
-
-  get view() {
-    return null;
-  }
-
-  command() {
-    return () => {};
-  }
-
-  get schema() {
-    return {
-      attrs: {},
-      parseDOM: [
-        {
-          tag: 'hr'
-        },
-      ],
-      toDOM: node => {
-        return ['hr']
-      },
-    };
-  }
+            return true;
+        }
+    }
 }

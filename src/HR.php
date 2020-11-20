@@ -2,17 +2,15 @@
 
 namespace Pecotamic\BardHR;
 
-use ProseMirrorToHtml\Marks\Mark;
+use ProseMirrorToHtml\Nodes\Node;
 
-class HR extends Mark
+class HR extends Node
 {
-    protected $markType = 'hr';
+    protected $nodeType = 'horizontal_ruler';
     protected $tagName = 'hr';
 
-    public function tag(): ?array
+    public function selfClosing()
     {
-        return [
-            ['tag' => 'hr'],
-        ];
+        return true;
     }
 }
